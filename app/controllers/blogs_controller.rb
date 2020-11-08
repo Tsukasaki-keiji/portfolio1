@@ -1,0 +1,39 @@
+class BlogsController < ApplicationController
+  before_action :authenticate_user!
+  def index
+    @blogs = Blog.all
+    @blog = Blog.new
+  end
+  
+  def new
+    @blog = Blog.new
+  end 
+  
+  def create
+    @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
+    if @blog.save
+      redirect_to blog_path(@blog), notice: "You have created book successfully."
+    else
+      @blogs = Blog.all
+      render 'index'
+    end
+  end
+
+  def show
+    @blog = Blog.find(params[:id])
+    @blog_new = Blog.new
+  end
+  
+  def destroy
+    @blog = Blog.find(params[:id])
+    @blog.destroy
+    redirect_to blogs_path
+  end
+
+private
+  def blog_params
+    params.require(:blog).permit(:title, :body, :genre, :image)
+  end
+
+end

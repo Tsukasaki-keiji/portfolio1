@@ -1,0 +1,26 @@
+= render 'layouts/header'
+
+.mb-3
+-if @blog.errors.any?
+
+  div.alert alert-warning
+   div= blog.errors.count, error prohibited this book from being saved:
+    ul
+     -blog.errors.full_messages.each do |message|
+      li= message
+.flex-container      
+ .container
+  .row
+   h1 新規投稿
+   = form_with model: @blog, local:true do |f|
+    = f.label "記事タイトル"
+    = f.text_field :title
+    
+    = f.label "画像"
+    = f.file_field :image
+    
+    = f.label "本文"
+    = f.text_area :body
+    
+    
+    = f.submit "投稿"
