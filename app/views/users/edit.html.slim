@@ -1,0 +1,29 @@
+= render 'layouts/header'
+
+- if @user.errors.any?
+ = @user.errors.count "error"
+ = @user.errors.full_messages.each do |message|
+  = message
+
+.container
+ .row
+ .form-group 
+  .col-xs-3
+  h1 プロフィール編集
+  = form_with model: @user, local: true do |f|
+   .form-group
+   = f.label "名前"
+   = f.text_field :name, class:"form-control name", placeholder:"Name"
+   
+   .form-group
+   = f.label "画像"
+   = f.file_field :image
+   
+   .form-group
+   = f.label "プロフィール"
+   = f.text_area :introduction, class:"form-control introduction"
+   
+   
+   .form-group
+   = f.submit "編集内容を保存する", class:"btn btn-primary btn-block btn-base-1 mt-20"
+   

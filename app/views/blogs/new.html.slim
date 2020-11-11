@@ -8,19 +8,40 @@
     ul
      -blog.errors.full_messages.each do |message|
       li= message
-.flex-container      
+.flexcontainer      
  .container
   .row
-   h1 新規投稿
-   = form_with model: @blog, local:true do |f|
-    = f.label "記事タイトル"
-    = f.text_field :title
-    
-    = f.label "画像"
-    = f.file_field :image
-    
-    = f.label "本文"
-    = f.text_area :body
-    
-    
-    = f.submit "投稿"
+   .col-xs-9
+    .create-box
+    h1 新規投稿
+    = form_with model: @blog, local:true do |f|
+     .form-group
+     = f.label "記事タイトル"
+     = f.text_field :title
+     
+     .form-group
+     = f.label "画像"
+     = f.file_field :image
+     
+     
+     .form-group
+     = f.label "本文"
+     = f.text_area :body
+     
+     #star 
+      = f.label :rate
+      = f.hidden_field :rate, id: :blogs_star
+     
+     javascript:
+      $('#star').raty({
+        size:36,
+        starOff: "#{asset_path('star-off.png')}",
+        starOn: "#{asset_path('star-on.png')}",
+        starHalf: "#{asset_path('star-half.png')}",
+        scoreName: 'blogs[rate]',
+        half: true,
+      });
+     
+     
+     = f.submit "投稿"
+   .col-xs-3  

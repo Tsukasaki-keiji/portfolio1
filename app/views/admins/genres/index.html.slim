@@ -1,28 +1,33 @@
-h3 ジャンル一覧・追加
-
-.mb-3
- = form_with model:@genre, :url => {:action => :create}, local:true do |f|
-  = f.text_field :name
-  = f.radio_button :is_active, true
-  = f.label :is_active, "有効", value: :true, style: "display: inline-block;"
-  = f.radio_button :is_active, false
-  = f.label :is_active, "無効", value: :false, style: "display: inline-block;"
-  = f.submit "追加", class: "btn btn-info"
-  
-  
-
-  .table.table-hover
-   tr
-    th ジャンル
-    th 状態
-   tbody
-    - @genres.each do |genre|
-     tr
-      td= genre.name
-      - if genre.is_active == 'true'
-       td.genre-tag "有効"
-      - else 
-       td.genre-tag "無効"
-     td.genre-td
-      = link_to '編集する',edit_admins_genre_path(genre.id),　class: "glyphicon glyphicon-pencil btn btn-success"
-        
+.contaner
+ .row
+  h3 ジャンル一覧・追加
+  .mb-3
+   = form_with model:@genre, :url => {:action => :create}, local:true do |f|
+    = f.text_field :name
+    = f.radio_button :is_active, true
+    = f.label :is_active, "有効", value: :true, style: "display: inline-block;"
+    = f.radio_button :is_active, false
+    = f.label :is_active, "無効", value: :false, style: "display: inline-block;"
+    = f.submit "追加", class: "btn btn-info"
+    
+    
+    .row
+    .table.table-hover
+      thead
+       .form-group
+        th ジャンル
+        th 状態
+      tbody
+        - @genres.each do |genre|
+         tr
+          .form-group
+          td = genre.name
+          - if genre.is_active == true
+           .form-group
+           td.genre-tag 有効
+          - else
+           .form-group
+           td.genre-tag 無効
+         td.genre-td
+          = link_to '編集する',edit_admins_genre_path(genre.id),　class: "glyphicon glyphicon-pencil btn btn-success"
+          

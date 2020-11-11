@@ -1,12 +1,17 @@
-table
- tr= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg")
+-if current_user.id == user.id
+.container
+ .row
+ table
+  h1 登録情報
+  tr= attachment_image_tag(user, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg")
  
- tr
-  th= user.name
+  tr
+   th= "name"
+   th= current_user.name
+   
+  tr
+   th= "introduction"
+   th= current_user.introduction
+   
   
- tr
-  th= introduction
-  th= = user.introduction
-  
- div.row
-  = link_to '', edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}"
+ = link_to 'プロフィール編集', edit_user_path(user), class:"btn btn-primary btn-block edit_user_#{current_user.id}"
