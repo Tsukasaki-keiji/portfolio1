@@ -3,6 +3,12 @@ class BlogsController < ApplicationController
   def index
     @blogs = Blog.all
     @blog = Blog.new
+    @genres = Genre.where(is_active: true)
+    @genre = @genres.find_by(id: params[:search])
+    unless @genre.nil?
+      @blogs = Blog.where(genre_id: @genre.id)
+      @title = @genre.name
+    end  
   end
   
   def new
@@ -11,6 +17,7 @@ class BlogsController < ApplicationController
   
   def create
     @blog = Blog.new(blog_params)
+    @genres = Genre.where(is_active: true)
     @blog.user_id = current_user.id
     if @blog.save
       redirect_to blog_path(@blog), notice: "You have created book successfully."
@@ -23,6 +30,9 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
     @blog_new = Blog.new
+    @genres = Genre.where(is_active: true)
+    @item = Item.new
+    @item = Item.find(params[:id])
   end
   
   def destroy

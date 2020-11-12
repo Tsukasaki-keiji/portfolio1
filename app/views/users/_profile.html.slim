@@ -3,7 +3,7 @@
  .row
  table
   h1 登録情報
-  tr= attachment_image_tag(user, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg")
+  tr= attachment_image_tag current_user, :profile_image, :fill, 60, 60, format:'jpeg', class:"pull-left profile-img", fallback:"no_image.jpg"
  
   tr
    th= "name"
@@ -15,3 +15,14 @@
    
   
  = link_to 'プロフィール編集', edit_user_path(user), class:"btn btn-primary btn-block edit_user_#{current_user.id}"
+ 
+/-else
+ table
+  tr= attachment_image_tag user, :profile_image, :fill, 60, 60, format:'jpeg', class:"img-circle pull-left profile-img", fallback:"no_image.jpg"
+  tr
+   th = "name"
+   th = user.name
+   
+  tr
+   th = "introduction"
+   th = user.introduction

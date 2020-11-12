@@ -1,0 +1,9 @@
+h4 ジャンル検索
+
+.mb-3
+ .table
+  -@genres.each do |genre|
+   tr
+    td.text-center
+     .form-group
+     =link_to "#{genre.name}", blogs_path(search: genre.id)

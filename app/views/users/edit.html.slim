@@ -17,7 +17,7 @@
    
    .form-group
    = f.label "画像"
-   = f.file_field :image
+   = f.attachment_field :profile_image, placeholder:"ProfileImage", class:"user-edit-form"
    
    .form-group
    = f.label "プロフィール"

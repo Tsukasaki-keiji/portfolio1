@@ -1,5 +1,7 @@
 = render 'layouts/header'
 
+= render 'blogs/search',  genres: @genres
+
 .container
  h1 全ての投稿記事
 
@@ -12,6 +14,9 @@
      div.blogs-list
       = link_to blog_path(blog) do
       = attachment_image_tag blog, :image, :fill, 180, 120, format: 'jpeg'
+      
+     / = link_to(user_path(blog.user), class: 'list-content') do
+      = attachment_image_tag blog.user, :profile_image, size: "50x50", format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg"
      
      td= link_to blog.title, blog_path(blog), class: "blog_#{blog.id}" 
      td= blog.body

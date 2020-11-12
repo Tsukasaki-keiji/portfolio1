@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :blogs
   resources :users, only: [:index, :show, :update, :edit, :new]
   
-  
+  resources :items, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :admins, controllers:{
     sessions:'admins/sessions',

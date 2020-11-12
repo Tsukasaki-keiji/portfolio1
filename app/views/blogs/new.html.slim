@@ -41,7 +41,19 @@
         scoreName: 'blogs[rate]',
         half: true,
       });
+      
+     .form-group
+     = f.radio_button :is_active, false
+     = f.label :is_active, "トランプ"
      
+     th
+     = f.radio_button :is_active, false
+     = f.label :is_active, "ボードゲーム"
      
+     th
+     = f.radio_button :is_active, false
+     = f.label :is_active, "その他"
+     
+     .form-group
      = f.submit "投稿"
    .col-xs-3  
