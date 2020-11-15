@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @blogs = Blog.all
     @blog = Blog.new
+    @bookmark = Bookmark.where(user_id: current_user.id)
   end
   
   def edit

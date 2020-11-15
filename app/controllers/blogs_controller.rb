@@ -11,6 +11,13 @@ class BlogsController < ApplicationController
     end  
   end
   
+  def edit
+    @blog = Blog.find(params[:id])
+   if current_user.id != @blog.user_id
+      redirect_to blogs_path
+   end
+  end  
+  
   def new
     @blog = Blog.new
   end 
@@ -19,7 +26,7 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
     @genres = Genre.where(is_active: true)
     @blog.user_id = current_user.id
-    if @blog.save
+    if @blog.save!
       redirect_to blog_path(@blog), notice: "You have created book successfully."
     else
       @blogs = Blog.all
@@ -28,11 +35,9 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @blog = Blog.find(params[:id])
+    @blog = Blog.find_by(params[:id])
     @blog_new = Blog.new
     @genres = Genre.where(is_active: true)
-    @item = Item.new
-    @item = Item.find(params[:id])
   end
   
   def destroy
@@ -43,7 +48,7 @@ class BlogsController < ApplicationController
 
 private
   def blog_params
-    params.require(:blog).permit(:title, :body, :genre, :image)
+    params.require(:blog).permit(:title, :body, :genre, :image, :rate)
   end
 
 end

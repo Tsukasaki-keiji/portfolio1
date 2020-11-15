@@ -1,0 +1,36 @@
+= render 'layouts/header'
+
+.container
+ .row
+ .form-group
+  h1 編集画面
+  = form_with model: @blog, local:true do |f|
+     .form-group
+     = f.label "記事タイトル"
+     = f.text_field :title
+     
+     .form-group
+     = f.label "画像"
+     = f.file_field :image
+     
+     
+     .form-group
+     = f.label "本文"
+     = f.text_area :body
+     
+     #star 
+      = f.label :rate
+      = f.hidden_field :rate, id: :blogs_star
+     
+     javascript:
+      $('#star').raty({
+        size:36,
+        starOff: "#{asset_path('star-off.png')}",
+        starOn: "#{asset_path('star-on.png')}",
+        starHalf: "#{asset_path('star-half.png')}",
+        scoreName: 'blog[rate]',
+        half: true,
+      });
+     
+     .form-group
+     = f.submit "保存"

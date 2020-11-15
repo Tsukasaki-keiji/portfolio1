@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :genres, only: [:index, :create, :show, :edit, :update]
-  resources :blogs
+  #resources :blogs do
+  #  resources :bookmarks
+  #end  
+  resources :blogs do
+   resources :bookmarks
+  end 
   resources :users, only: [:index, :show, :update, :edit, :new]
   
   resources :items, only: [:index, :show]
