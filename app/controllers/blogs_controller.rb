@@ -35,7 +35,7 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @blog = Blog.find_by(params[:id])
+    @blog = Blog.find(params[:id])
     @blog_new = Blog.new
     @genres = Genre.where(is_active: true)
   end
@@ -48,7 +48,7 @@ class BlogsController < ApplicationController
 
 private
   def blog_params
-    params.require(:blog).permit(:title, :body, :genre, :image, :rate)
+    params.require(:blog).permit(:title, :body, :genre, :image, :rate, :genre_id)
   end
 
 end
