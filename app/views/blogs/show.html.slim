@@ -19,6 +19,19 @@
     td = link_to "ブックマークを外す", blog_bookmark_path(@blog), method: :delete
    - else
     td = link_to "ブックマーク", blog_bookmarks_path(@blog), method: :post
+    
+   #star 
+     
+   javascript:
+    $('#star').raty({
+      size:36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      half: true,
+      score: "#{@blog.rate}",
+      readOnly: true
+    }); 
   
   = form_with(model:[@blog, @comment], method: :post) do |f|
    = f.text_area :comment_content
