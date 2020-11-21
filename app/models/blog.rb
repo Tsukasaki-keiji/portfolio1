@@ -1,5 +1,6 @@
 class Blog < ApplicationRecord
   belongs_to :user
+  has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   attachment :image
   validates :image, presence: true

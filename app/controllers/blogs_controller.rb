@@ -38,6 +38,8 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @blog_new = Blog.new
     @genres = Genre.where(is_active: true)
+    @comments = @blog.comments
+    @comment = current_user.comments.new
   end
   
   def destroy

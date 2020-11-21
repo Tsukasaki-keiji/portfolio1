@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   #end  
   resources :blogs do
    resources :bookmarks
+   resources :comments, only: [:create, :destroy]
   end 
   resources :users, only: [:index, :show, :update, :edit, :new]
   

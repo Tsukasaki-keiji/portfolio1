@@ -19,4 +19,15 @@
     td = link_to "ブックマークを外す", blog_bookmark_path(@blog), method: :delete
    - else
     td = link_to "ブックマーク", blog_bookmarks_path(@blog), method: :post
-    
+  
+  = form_with(model:[@blog, @comment], method: :post) do |f|
+   = f.text_area :comment_content
+   = f.hidden_field :blog_id, value: @blog.id
+   = f.submit 'コメントする'
+  
+  h3 コメント一覧
+  - @comments.each do |comment|
+   = comment.comment_content
+   - if comment.user == current_user
+    = link_to "Destroy", blog_comments_path(@blog, @comment), method: :delete, remote:true, class: "btn btn-danger"
+   
