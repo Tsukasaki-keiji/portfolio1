@@ -1,19 +1,19 @@
 = render 'layouts/header'
 
-= render 'blogs/search',  genres: @genres
-
 .container
- .mb-3
-  h1 全ての投稿記事
-  tbody
-   -@blogs.each do |blog|
-    = link_to blog_path(blog.id) do
-    
-    -if blog.is_active
-    tr 
-     div.blogs-list
-      = link_to blog_path(blog) do
-      td= attachment_image_tag blog, :image, :fill, 180, 120, format: 'jpeg'
-          
-      td= link_to blog.title, blog_path(blog), class: "blog_#{blog.id}" 
-      td= blog.body
+ .row
+    = render 'blogs/search',  genres: @genres
+    .mb-3
+     h1 全ての投稿記事
+     tbody
+      -@blogs.each do |blog|
+       = link_to blog_path(blog.id) do
+       
+       -if blog.is_active
+       tr 
+        div.blogs-list
+         = link_to blog_path(blog) do
+         td.nav-item = attachment_image_tag blog, :image, :fill, 180, 120, format: 'jpeg', class: 'nav-link'
+             
+         td.nav-item = link_to blog.title, blog_path(blog), class: "blog_#{blog.id}", class: 'nav-link'
+         td.nav-item = blog.body

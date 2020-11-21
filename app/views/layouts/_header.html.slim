@@ -1,23 +1,26 @@
 header
  .container
-  .row
-   = link_to 'みんなで遊ぼう！', root_path, class: 'navbar-brand'
-   .navbar-guest-name
-    - if user_signed_in?
-     p class="navbar-text test"
-      = "ようこそ #{current_user.name} さん"
-    - else
-     p class="navbar-text" ようこそゲストさん
-   .ul.navbar.navbar-right
-     tr
-      th
+   nav.navbar.navbar-expand-lg
+    .collapse.navbar-collapse
+     ul.navbar-nav.mr-auto
+      li.nav-item
+       = link_to 'みんなで遊ぼう！', root_path, class: 'navbar-brand'
+      li.nav-item
+       - if user_signed_in?
+        p class="navbar-text test"
+         = "ようこそ #{current_user.name} さん"
+       - else
+        p class="navbar-text" ようこそゲストさん
+     ul.navbar-nav style='margin-bottom: 1rem;'
       -if user_signed_in?
-       li= link_to 'マイページ', user_path(current_user)
-       li= link_to '投稿一覧', blogs_path
-       li= link_to '新規投稿', new_blog_path
-       li= link_to 'ログアウト', destroy_user_session_path, method: :delete
+       li.nav-item = link_to 'マイページ', user_path(current_user), class: 'nav-link'
+       li.nav-item = link_to '投稿一覧', blogs_path, class: 'nav-link'
+       li.nav-item = link_to '新規投稿', new_blog_path, class: 'nav-link'
+       li.nav-item = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link'
       -else
-       li= link_to 'About', home_about_path
-       li= link_to '投稿一覧', blogs_path
-       li= link_to '新規登録', new_user_registration_path
-       li= link_to 'ログイン', new_user_session_path
+       li.nav-item = link_to 'About', home_about_path, class: 'nav-link'
+       li.nav-item = link_to '投稿一覧', blogs_path, class: 'nav-link'
+       li.nav-item = link_to '新規登録', new_user_registration_path, class: 'nav-link'
+       li.nav-item = link_to 'ログイン', new_user_session_path, class: 'nav-link'
+         
+         

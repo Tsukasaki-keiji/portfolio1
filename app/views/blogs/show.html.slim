@@ -4,17 +4,19 @@
  .row
  .form-group
   h1 投稿詳細
+  table
+   td = @blog.title
   tr
-   th= link_to "Edit", edit_blog_path, class: "edit_blog_#{@blog.id}"
-   th= link_to 'Destroy', @blog_path, method: :delete, data: { confirm: 'Are you sure?'}
+   th= link_to "編集する", edit_blog_path, class: "edit_blog_#{@blog.id}", class: "btn btn-primary"
+   th= link_to '削除する', @blog_path, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger"
  
  tbody
   tr
-   td = @blog.user.name
-   td = @blog.title
+   /td = @blog.user.name
+   /td = @blog.title
    td = @blog.body
-   td = link_to "編集", edit_blog_path(@blog)
    - if @blog.bookmarked_by?(current_user)
     td = link_to "ブックマークを外す", blog_bookmark_path(@blog), method: :delete
    - else
     td = link_to "ブックマーク", blog_bookmarks_path(@blog), method: :post
+    
