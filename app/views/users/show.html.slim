@@ -15,19 +15,22 @@
         
         -if blog.is_active
         tr 
+         .form-group 
          div.blogs-list
           = link_to blog_path(blog) do
           td= attachment_image_tag blog, :image, :fill, 180, 120, format: 'jpeg'
-          
+         .form-group 
           td= link_to blog.title, blog_path(blog), class: "blog_#{blog.id}" 
+         .form-group  
           td= blog.body
      
      h2 ブックマーク一覧
      table   
        tr
-         th 投稿者名
-         th タイトル
-         th 本文
+       .form-group 
+        th 投稿者名
+        th タイトル
+        th 本文
 
        -@bookmark.each do |bookmark|
         tr

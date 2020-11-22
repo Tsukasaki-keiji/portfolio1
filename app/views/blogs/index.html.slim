@@ -2,18 +2,34 @@
 
 .container
  .row
-    = render 'blogs/search',  genres: @genres
-    .mb-3
-     h1 全ての投稿記事
-     tbody
-      -@blogs.each do |blog|
-       = link_to blog_path(blog.id) do
-       
-       -if blog.is_active
-       tr 
-        div.blogs-list
-         = link_to blog_path(blog) do
-         td.nav-item = attachment_image_tag blog, :image, :fill, 180, 120, format: 'jpeg', class: 'nav-link'
-             
-         td.nav-item = link_to blog.title, blog_path(blog), class: "blog_#{blog.id}", class: 'nav-link'
-         td.nav-item = blog.body
+  = render 'blogs/search', genres: @genres
+  .mb-3
+   h1 全ての投稿記事
+   
+   -@blogs.each do |blog|
+    = link_to blog_path(blog.id) do
+    
+    -if blog.is_active
+     tr 
+      div.blogs-list
+       = link_to blog_path(blog) do
+       td= attachment_image_tag blog, :image, :fill, 180, 120, format: 'jpeg'
+     .form-group
+       td= link_to blog.title, blog_path(blog), class: "blog_#{blog.id}"
+     .form-group  
+       td= blog.body
+     div class="star_#{blog.id}"
+     
+     javascript:
+      if ($(".star_#{blog.id}").children().length === 0) {
+       $(".star_#{blog.id}").raty({
+         size:36,
+         starOff: "#{asset_path('star-off.png')}",
+         starOn: "#{asset_path('star-on.png')}",
+         starHalf: "#{asset_path('star-half.png')}",
+         half: true,
+         score: "#{blog.rate}",
+         readOnly: true
+       });
+      }
+    

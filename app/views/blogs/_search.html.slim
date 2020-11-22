@@ -1,9 +1,8 @@
-h4 ジャンル検索
-
-.mb-3
+.mb-3.pr-64
+ h4 ジャンル検索
  .table
   -@genres.each do |genre|
    tr
     td.text-center
      .form-group
-     =link_to "#{genre.name}", blogs_path(search: genre.id)
+      =link_to "#{genre.name}", blogs_path(search: genre.id)
