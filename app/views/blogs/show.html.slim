@@ -7,8 +7,9 @@
   table
    td = @blog.title
   tr
+   - if @blog.user == current_user
    th= link_to "編集する", edit_blog_path, class: "edit_blog_#{@blog.id}", class: "btn btn-primary"
-   th= link_to '削除する', @blog_path, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger"
+   th= link_to '削除する', blog_path, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger"
  
  tbody
   tr
@@ -21,18 +22,20 @@
    - else
     td = link_to "ブックマーク", blog_bookmarks_path(@blog), method: :post
     
-   #star 
-     
+   div class="star_#{@blog.id}"
+   
    javascript:
-    $('#star').raty({
-      size:36,
-      starOff: "#{asset_path('star-off.png')}",
-      starOn: "#{asset_path('star-on.png')}",
-      starHalf: "#{asset_path('star-half.png')}",
-      half: true,
-      score: "#{@blog.rate}",
-      readOnly: true
-    }); 
+    if ($(".star_#{@blog.id}").children().length === 0) {
+     $(".star_#{@blog.id}").raty({
+       size:36,
+       starOff: "#{asset_path('star-off.png')}",
+       starOn: "#{asset_path('star-on.png')}",
+       starHalf: "#{asset_path('star-half.png')}",
+       half: true,
+       score: "#{@blog.rate}",
+       readOnly: true
+     });
+    }
   
   = form_with(model:[@blog, @comment], method: :post) do |f|
    = f.text_area :comment_content

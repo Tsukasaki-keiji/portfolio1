@@ -2,35 +2,35 @@
 
 .container
  .row
-  = render 'blogs/search', genres: @genres
-  .mb-3
-   h1 全ての投稿記事
-   
-   -@blogs.each do |blog|
-    = link_to blog_path(blog.id) do
+  .col-xs-3
+   .row
+    = render 'blogs/search', genres: @genres
+  .col-xs-5  
+   table
+    h1 全ての投稿記事
     
-    -if blog.is_active
-     tr
-     .form-group
-      div.blogs-list
-       = link_to blog_path(blog) do
-       td= attachment_image_tag blog, :image, :fill, 180, 120, format: 'jpeg'
-     .form-group
-       td= link_to blog.title, blog_path(blog), class: "blog_#{blog.id}"
-     .form-group  
-       td= blog.body
-     div class="star_#{blog.id}"
+    -@blogs.each do |blog|
+     -if blog.is_active
+      tbody
+       tr
+        td rowspan='3'
+         = attachment_image_tag blog, :image, :fill, 180, 120, format: 'jpeg'
+        td= link_to blog.title, blog_path(blog), class: "blog_#{blog.id}"
+       tr  colspan='2'
+        td= blog.body
+       tr
+        td colspan='2' class="star_#{blog.id}"
+      
+      javascript:
+       if ($(".star_#{blog.id}").children().length === 0) {
+        $(".star_#{blog.id}").raty({
+          size:36,
+          starOff: "#{asset_path('star-off.png')}",
+          starOn: "#{asset_path('star-on.png')}",
+          starHalf: "#{asset_path('star-half.png')}",
+          half: true,
+          score: "#{blog.rate}",
+          readOnly: true
+        });
+       }
      
-     javascript:
-      if ($(".star_#{blog.id}").children().length === 0) {
-       $(".star_#{blog.id}").raty({
-         size:36,
-         starOff: "#{asset_path('star-off.png')}",
-         starOn: "#{asset_path('star-on.png')}",
-         starHalf: "#{asset_path('star-half.png')}",
-         half: true,
-         score: "#{blog.rate}",
-         readOnly: true
-       });
-      }
-    
