@@ -8,10 +8,10 @@
     ul
      -blog.errors.full_messages.each do |message|
       li= message
-.flexcontainer      
+.flexcontainer.pr-65     
  .container
   .row
-   .col-xs-9
+  .from-group
     .create-box
     h1 新規投稿
     = form_with model: @blog, local:true do |f|
@@ -49,4 +49,3 @@
          = f.label :genre_id, genre.name
      .form-group
      = f.submit "投稿"
-   .col-xs-3  
