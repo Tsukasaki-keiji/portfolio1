@@ -12,8 +12,9 @@
  
  tbody
   tr
-   /td = @blog.user.name
-   /td = @blog.title
+  div.blogs-list
+   = link_to blog_path(@blog) do
+   td= attachment_image_tag @blog, :image, :fill, 360, 240, format: 'jpeg'
    td = @blog.body
    - if @blog.bookmarked_by?(current_user)
     td = link_to "ブックマークを外す", blog_bookmark_path(@blog), method: :delete
