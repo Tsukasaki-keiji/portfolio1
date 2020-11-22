@@ -42,6 +42,15 @@ class BlogsController < ApplicationController
     @comment = current_user.comments.new
   end
   
+  def update
+    @blog = Blog.find(params[:id])
+    if @blog.update(blog_params)
+      redirect_to blog_path(@blog), notice: "You have updated user successfully."
+    else
+      render "edit"
+    end  
+  end
+  
   def destroy
     @blog = Blog.find(params[:id])
     @blog.destroy
