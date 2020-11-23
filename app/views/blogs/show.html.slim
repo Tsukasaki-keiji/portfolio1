@@ -7,7 +7,7 @@
   table
    td = @blog.title
   tr
-   - if @blog.user == current_user
+  - if @blog.user == current_user
    th= link_to "編集する", edit_blog_path, class: "edit_blog_#{@blog.id}", class: "btn btn-primary"
    th= link_to '削除する', blog_path, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger"
  
