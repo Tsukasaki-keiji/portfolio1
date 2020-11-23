@@ -13,7 +13,7 @@
      -if blog.is_active
       tbody
        tr
-        td rowspan='3'
+        td.pr-70 rowspan='3'
          = attachment_image_tag blog, :image, :fill, 180, 120, format: 'jpeg'
         td= link_to blog.title, blog_path(blog), class: "blog_#{blog.id}"
        tr  colspan='2'
