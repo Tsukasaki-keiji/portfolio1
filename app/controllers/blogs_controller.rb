@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:edit, :new, :create, :show]
   def index
     @blogs = Blog.all
     @blog = Blog.new
@@ -26,7 +26,7 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
     @genres = Genre.where(is_active: true)
     @blog.user_id = current_user.id
-    if @blog.save!
+    if @blog.save
       redirect_to blog_path(@blog), notice: "You have created book successfully."
     else
       @blogs = Blog.all

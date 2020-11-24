@@ -2,12 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .pr-64 {
-  padding-right:64px ;
+  padding-right:80px ;
 }
 
 .pr-65 {
  display:flex;
  justify-content:flex-end;
+}
+
+.title {
+  padding: 0.25em 0.5em;
+  color: #494949;
+  background: transparent;
+  border-left: solid 5px #7db4e6;
 }
 
 .pr-70 {

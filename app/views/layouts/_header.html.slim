@@ -4,6 +4,8 @@ header class="navbar-light bg-light"
     .collapse.navbar-collapse
      ul.navbar-nav.mr-auto
       li.nav-item
+       = image_tag("24112020064758A.jpg", alt: "logo", size: "150x60")
+      li.nav-item.pr-51
        = link_to 'みんなで遊ぼう！', root_path, class: 'navbar-brand'
       li.nav-item
        - if user_signed_in?
