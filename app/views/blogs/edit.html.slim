@@ -6,17 +6,19 @@
   h1 編集画面
   = form_with model: @blog, local:true do |f|
      .form-group
-     = f.label "記事タイトル"
-     = f.text_field :title
+      = f.label "記事タイトル"
+      = f.text_field :title, class: "form-control"
      
      .form-group
-     = f.label "画像"
-     = f.file_field :image
+      = f.label "画像"
+      .custom-file 
+       = f.file_field :image,id: "inputFile", class: "custom-file-input form-control"
+       label.custom-file-label for="inputFile"  Choose file
      
      
      .form-group
-     = f.label "本文"
-     = f.text_area :body
+      = f.label "本文"
+      = f.text_area :body, class: "form-control"
      
      #star 
       = f.label :rate

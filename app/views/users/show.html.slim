@@ -7,29 +7,29 @@
      div.row
       = render 'users/profile', user: @user
      
-    .col-xs-5.pr-64
+    .col-xs-9.pr-64.pr-71
      table
       h1 投稿一覧
       -@blogs.each do |blog|
         = link_to blog_path(blog.id) do
         
         -if blog.is_active
-        tr 
-         .form-group 
-         div.blogs-list
-          = link_to blog_path(blog) do
-          td= attachment_image_tag blog, :image, :fill, 180, 120, format: 'jpeg'
-         .form-group 
-          td= link_to blog.title, blog_path(blog), class: "blog_#{blog.id}" 
-         .form-group  
-          td= blog.body
-    .col-xs-4 
+        tbody
+         tr
+          td.pr-70 rowspan='3'
+           = attachment_image_tag blog, :image, :fill, 180, 120, format: 'jpeg'
+          td= link_to blog.title, blog_path(blog), class: "blog_#{blog.id}"
+         tr  colspan='2'
+          td= simple_format(blog.body)
+         tr
+          td colspan='2' class="star_#{blog.id}"
+
      h2 ブックマーク一覧
      table   
        tr
        .form-group 
-        th 投稿者名
-        th タイトル
+        th.pr-63 投稿者名
+        th.pr-63 タイトル
         th 本文
 
        -@bookmark.each do |bookmark|
@@ -38,4 +38,4 @@
          td 
             = link_to blog_path(bookmark.blog) do
               = bookmark.blog.title
-         td = bookmark.blog.body    
+         td = simple_format(bookmark.blog.body)    

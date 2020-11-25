@@ -1,6 +1,10 @@
 // Place all the styles related to the blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.pr-63 {
+  padding-right:10px;
+}
+
 .pr-64 {
   padding-right:80px ;
 }
@@ -24,6 +28,11 @@
   padding-top:10px;
   border-bottom:solid;
   border-width:1px;
+}
+
+.pr-71 {
+  padding-top:15px;
+  padding-bottom:15px;
 }
 
 h1 {

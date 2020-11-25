@@ -2,7 +2,7 @@
 
 .container
  .row
- .form-group
+ .form-group.pr-71
   h1 投稿詳細
   table
    td.title = @blog.title
@@ -13,7 +13,7 @@
  
  tbody
   tr colspan='2'
-   td 
+   td.pr-71
    div.blogs
     = link_to blog_path(@blog) do
     td = attachment_image_tag @blog, :image, :fill, 360, 240, format: 'jpeg'
