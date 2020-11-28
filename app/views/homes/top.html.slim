@@ -1,2 +1,22 @@
 = render 'layouts/header'
 
+div
+  input#img1[type="radio" name="photo" checked]
+  input#img2[type="radio" name="photo"]
+  input#img3[type="radio" name="photo"]
+  .slide
+    = image_tag 'wim-van-t-einde-4y3efE_x-NU-unsplash.jpg'
+    = image_tag 'pexels-raka-miftah-4253484.jpg'
+    = image_tag 'puzzle-3223941_1280.jpg'
+  ul.thumbnail
+    li
+      label[for="img1"]
+        = image_tag 'wim-van-t-einde-4y3efE_x-NU-unsplash.jpg'
+    li
+      label[for="img2"]
+        = image_tag 'pexels-raka-miftah-4253484.jpg'
+    li
+      label[for="img3"]
+        = image_tag 'puzzle-3223941_1280.jpg'
+        
+  

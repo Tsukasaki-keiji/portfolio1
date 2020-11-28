@@ -8,6 +8,9 @@ class BlogsController < ApplicationController
     unless @genre.nil?
       @blogs = Blog.where(genre_id: @genre.id)
       @title = @genre.name
+    else
+      @blogs = Blog.where(is_active: true)
+      @title = "すべての投稿"
     end  
   end
   

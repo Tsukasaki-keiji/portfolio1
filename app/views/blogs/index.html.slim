@@ -7,7 +7,7 @@
     = render 'blogs/search', genres: @genres
   .col-xs-9
    table
-    h1 全ての投稿記事
+    h1 = @title
     
     -@blogs.each do |blog|
      -if blog.is_active

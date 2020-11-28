@@ -9,7 +9,7 @@
      
     .col-xs-9.pr-64.pr-71
      table
-      h1 投稿一覧
+      h1 あなたの投稿
       -@blogs.each do |blog|
         = link_to blog_path(blog.id) do
         
@@ -24,6 +24,7 @@
          tr
           td colspan='2' class="star_#{blog.id}"
 
+     table
      h2 ブックマーク一覧
      table   
        tr
