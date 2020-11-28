@@ -31,7 +31,7 @@
        .form-group 
         th.pr-63 投稿者名
         th.pr-63 タイトル
-        th 本文
+        th.pl-60 本文
 
        -@bookmark.each do |bookmark|
         tr
@@ -39,4 +39,4 @@
          td 
             = link_to blog_path(bookmark.blog) do
               = bookmark.blog.title
-         td = simple_format(bookmark.blog.body)    
+         td.pl-60 = simple_format(bookmark.blog.body) 

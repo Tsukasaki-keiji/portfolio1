@@ -33,6 +33,12 @@
         scoreName: 'blog[rate]',
         half: true,
       });
+      
+     .form-group
+       - @genres = Genre.where(is_active: true)
+       - @genres.each do |genre|
+        = f.radio_button :genre_id, genre.id
+        = f.label :genre_id, genre.name
      
      .form-group
      = f.submit "保存"

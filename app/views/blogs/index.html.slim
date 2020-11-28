@@ -17,7 +17,7 @@
          = attachment_image_tag blog, :image, :fill, 180, 120, format: 'jpeg'
         td= link_to blog.title, blog_path(blog), class: "blog_#{blog.id}"
        tr  colspan='2'
-        td= blog.body
+        td= simple_format(blog.body)
        tr
         td colspan='2' class="star_#{blog.id}"
       
