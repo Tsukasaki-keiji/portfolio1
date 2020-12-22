@@ -8,7 +8,6 @@
 
 わいわい楽しい時間を過ごしたい人たちのゲーム、レクリエーション投稿サイト。
 自分たちが知っているゲーム、レクリエーションの画像やプレイの仕方を投稿する。
-そして、他のユーザーがコメント・いいねができる。
 
 ### テーマを選んだ理由
 
@@ -39,4 +38,4 @@ https://docs.google.com/spreadsheets/d/1TyxClPL7O4HvnM73w5_7EgcXTqvE0SSdTq1ueaRd
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
-- 仮想環境：Vagrant,VirtualBox
+- IDE: Cloud9
