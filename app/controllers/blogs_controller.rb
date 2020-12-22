@@ -6,10 +6,10 @@ class BlogsController < ApplicationController
     @genres = Genre.where(is_active: true)
     @genre = @genres.find_by(id: params[:search])
     unless @genre.nil?
-      @blogs = Blog.where(genre_id: @genre.id)
+      @blogs = @blogs.where(genre_id: @genre.id)
       @title = @genre.name
     else
-      @blogs = Blog.where(is_active: true)
+      @blogs = @blogs.where(is_active: true)
       @title = "すべての投稿"
     end  
   end
